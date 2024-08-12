@@ -1,0 +1,68 @@
+version: '3.8'
+
+volumes:
+  data:
+
+services:
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: docker
+      MONGO_INITDB_ROOT_PASSWORD: mongopw
+    volumes:
+      - data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://docker:mongopw@mongodb:27017
+    depends_on:
+      - mongodb
+
+  gateway-service:
+    image: gateway-service
+    container_name: gateway-service
+    ports:
+      - "9002:9002"
+    depends_on:
+      - mongodb
+    # Add any environment variables or configuration needed
+
+  discovery-service:
+    image: discovery-service
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    # Add any environment variables or configuration needed
+
+  auth-service:
+    image: auth-service
+    container_name: auth-service
+    ports:
+      - "9003:9003"
+    depends_on:
+      - mongodb
+    # Add any environment variables or configuration needed
+
+  user-service:
+    image: user-service
+    container_name: user-service
+    ports:
+      - "9004:9004"
+    depends_on:
+      - mongodb
+    # Add any environment variables or configuration needed
+
+  schedule-service:
+    image: schedule-service
+    container_name: schedule-service
+    ports:
+      - "9005:9005"
