@@ -1,4 +1,4 @@
-# RESTful-Microservices
+# REST-Microservices
 
 • Developed a Social Media API enabling friends to connect, lend money to each other, and schedule reminders for repayments.
 
