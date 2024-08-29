@@ -249,7 +249,7 @@ Once all the service Dockerized as mentioned in docker-compose.yaml file, run th
 }
 ```
 
-#### Pay the lender ( One the total amount is payed the reminders are deleted )
+#### Pay the lender ( Once the total amount is payed the reminders are deleted )
 ```javascript
   POST http://localhost:9002/transaction//pay-amount/user1@example.com/user2@example.com/1234567890
 ```
