@@ -205,7 +205,7 @@ Once all the service Dockerized as mentioned in docker-compose.yaml file, run th
 }
 ```
 
-#### Accept borrow request, a corn is sent to run after the set amount of days in the request ( Before sending money we need to accept a borrow request From Email to Email )
+#### Accept borrow request, a CRON JOB is sent to run after the set amount of days in the request as a reminder ( Before sending money we need to accept a borrow request From Email to Email )
 ```javascript
   POST http://localhost:9002/transaction/send-borrow-request/user1@example.com/user2@example.com
 ```
